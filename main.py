@@ -6,6 +6,14 @@ from src.phi2 import phi2_approval, phi2_ranking
 
 
 def main() -> None:
+    """
+    Small end-to-end demo of the current codebase.
+
+    Useful during a defense:
+    - shows how generation connects to measures,
+    - shows the project has one executable entry point,
+    - provides quick sanity-check outputs.
+    """
     approval_profile = generate_approval_profile(n=10, m=4, alpha=0.7, noise=0.1, seed=0)
     ranking_profile = generate_ranking_profile(n=10, m=4, alpha=0.7, noise=1, seed=0)
 

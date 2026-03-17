@@ -6,10 +6,12 @@ from src.types import ApprovalBallot, ApprovalProfile, RankingBallot, RankingPro
 
 
 def _flip_with_probability(ballot: ApprovalBallot, noise: float, rng: random.Random) -> ApprovalBallot:
+    """Return a noisy approval ballot by flipping each bit independently."""
     return [bit if rng.random() >= noise else 1 - bit for bit in ballot]
 
 
 def _random_swaps(order: RankingBallot, swaps: int, rng: random.Random) -> RankingBallot:
+    """Return a ranking after a fixed number of random pairwise swaps."""
     result = order[:]
     size = len(result)
     for _ in range(max(0, swaps)):
@@ -25,6 +27,15 @@ def generate_approval_profile(
     noise: float,
     seed: int | None = None,
 ) -> ApprovalProfile:
+    """
+    Generate an approval profile with a controllable polarization level.
+
+    Link with the project:
+    - This is the main helper for question 1.
+    - The output is consumed by `phi2_approval`, `u1_approval`, `kmeans2_approval`
+      and `phi_dH`.
+    - `alpha` controls the mix between one central bloc and two opposite blocs.
+    """
     if n <= 0 or m <= 0:
         raise ValueError("n and m must be positive")
     if not 0.0 <= alpha <= 1.0:
@@ -57,6 +68,15 @@ def generate_ranking_profile(
     noise: int,
     seed: int | None = None,
 ) -> RankingProfile:
+    """
+    Generate a ranking profile with a controllable polarization level.
+
+    Link with the project:
+    - This is the main helper for question 2.
+    - The output is consumed by `phi2_ranking`, `u1_ranking`, `kmeans2_ranking`
+      and `phi_dS`.
+    - `alpha` controls the mix between one reference order and its reverse.
+    """
     if n <= 0 or m <= 0:
         raise ValueError("n and m must be positive")
     if not 0.0 <= alpha <= 1.0:

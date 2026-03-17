@@ -5,6 +5,7 @@ from src.plots import plot_curve
 
 
 def main() -> None:
+    """Generate CSV files and figures for the distance-based experiments."""
     alphas = [i / 10 for i in range(11)]
     approval_results, ranking_results = sweep_alpha_for_distance_measures(
         n=40,

@@ -9,6 +9,7 @@ from src.plots import plot_curve
 
 
 def main() -> None:
+    """Generate CSV files and figures for the phi_2 experiments."""
     alphas = [i / 10 for i in range(11)]
 
     approval_results = sweep_alpha_for_phi2_approval(

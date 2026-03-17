@@ -6,6 +6,14 @@ from src.types import ApprovalProfile, RankingProfile
 
 
 def phi_dH(profile: ApprovalProfile, n_init: int = 20, seed: int | None = None) -> float:
+    """
+    Compute the distance-based polarization measure phi_dH for approval votes.
+
+    Link with the project:
+    - Main target for question 14 in the approval case.
+    - Uses `u1_approval` and `kmeans2_approval`.
+    - Studied experimentally in question 15.
+    """
     if not profile:
         return 0.0
     n = len(profile)
@@ -16,6 +24,14 @@ def phi_dH(profile: ApprovalProfile, n_init: int = 20, seed: int | None = None) 
 
 
 def phi_dS(profile: RankingProfile, n_init: int = 20, seed: int | None = None) -> float:
+    """
+    Compute the distance-based polarization measure phi_dS for ranking votes.
+
+    Link with the project:
+    - Main target for question 14 in the ranking case.
+    - Uses `u1_ranking` and `kmeans2_ranking`.
+    - Studied experimentally in question 15.
+    """
     if not profile:
         return 0.0
     n = len(profile)

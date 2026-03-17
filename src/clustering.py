@@ -8,6 +8,7 @@ from src.types import ApprovalProfile, RankingProfile
 
 
 def _assignment_changed(old_labels: list[int] | None, new_labels: list[int]) -> bool:
+    """Utility for the iterative clustering loop."""
     return old_labels is None or old_labels != new_labels
 
 
@@ -17,6 +18,14 @@ def kmeans2_approval(
     seed: int | None = None,
     max_iter: int = 100,
 ) -> dict:
+    """
+    Approximate the 2-cluster consensus cost for approval profiles.
+
+    Link with the project:
+    - First implementation for question 13 in the approval case.
+    - Uses `approval_consensus_ballot` to update cluster centroids.
+    - Its returned cost is the approximation `u2_tilde` used by `phi_dH`.
+    """
     if len(profile) < 2:
         return {"cost": 0, "centroids": profile[:], "labels": [0] * len(profile)}
 
@@ -61,6 +70,14 @@ def kmeans2_ranking(
     seed: int | None = None,
     max_iter: int = 100,
 ) -> dict:
+    """
+    Approximate the 2-cluster consensus cost for ranking profiles.
+
+    Link with the project:
+    - First implementation for question 13 in the ranking case.
+    - Uses `ranking_consensus_ballot` to update cluster centroids.
+    - Its returned cost is the approximation `u2_tilde` used by `phi_dS`.
+    """
     if len(profile) < 2:
         return {"cost": 0, "centroids": profile[:], "labels": [0] * len(profile)}
 

@@ -2,10 +2,21 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import matplotlib
+
+matplotlib.use("Agg")
+
 import matplotlib.pyplot as plt
 
 
 def plot_curve(results: list[dict], title: str, ylabel: str, output_path: str | Path) -> None:
+    """
+    Plot an experiment curve with error bars.
+
+    Link with the project:
+    - Shared visualization helper for questions 6 and 15.
+    - Consumes the summaries produced by `src.experiments`.
+    """
     output = Path(output_path)
     output.parent.mkdir(parents=True, exist_ok=True)
 

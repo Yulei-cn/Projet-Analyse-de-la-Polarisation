@@ -10,6 +10,7 @@ from src.phi2 import phi2_approval, phi2_ranking
 
 
 def _summarize(values: list[float]) -> tuple[float, float]:
+    """Return mean and standard deviation for repeated experiment values."""
     if not values:
         return 0.0, 0.0
     mean = statistics.fmean(values)
@@ -18,6 +19,7 @@ def _summarize(values: list[float]) -> tuple[float, float]:
 
 
 def save_results_csv(rows: list[dict], output_path: str | Path) -> None:
+    """Persist experiment summaries so they can be reused in the report."""
     output = Path(output_path)
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open("w", newline="", encoding="utf-8") as handle:
@@ -33,6 +35,13 @@ def sweep_alpha_for_phi2_approval(
     alphas: list[float],
     num_trials: int,
 ) -> list[dict]:
+    """
+    Run the question 6 experiment for approval profiles.
+
+    Link with the project:
+    - Combines question 1 generation with question 5 measure evaluation.
+    - The output is ready for plotting with `plot_curve`.
+    """
     rows = []
     for alpha in alphas:
         values = [
@@ -51,6 +60,13 @@ def sweep_alpha_for_phi2_ranking(
     alphas: list[float],
     num_trials: int,
 ) -> list[dict]:
+    """
+    Run the question 6 experiment for ranking profiles.
+
+    Link with the project:
+    - Combines question 2 generation with question 5 measure evaluation.
+    - The output is ready for plotting with `plot_curve`.
+    """
     rows = []
     for alpha in alphas:
         values = [
@@ -71,6 +87,13 @@ def sweep_alpha_for_distance_measures(
     num_trials: int,
     n_init: int = 10,
 ) -> tuple[list[dict], list[dict]]:
+    """
+    Run the question 15 experiments for phi_dH and phi_dS.
+
+    Link with the project:
+    - Combines generation, consensus, clustering and final measures.
+    - Returns two result tables: one for approval, one for rankings.
+    """
     approval_rows = []
     ranking_rows = []
 
