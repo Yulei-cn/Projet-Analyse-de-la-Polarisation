@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from collections import Counter
+from functools import lru_cache
 
 from src.distances import hamming_distance, spearman_distance
 from src.types import ApprovalBallot, ApprovalProfile, RankingBallot, RankingProfile
@@ -37,29 +38,80 @@ def u1_approval(profile: ApprovalProfile) -> int:
     return sum(hamming_distance(consensus, ballot) for ballot in profile)
 
 
-def ranking_consensus_ballot(profile: RankingProfile) -> RankingBallot:
+def ranking_assignment_costs(profile: RankingProfile) -> list[list[int]]:
     """
-    Build a first ranking consensus ballot using average candidate positions.
+    Build the candidate-position cost matrix for the ranking consensus problem.
 
     Link with the project:
-    - This is a provisional implementation for questions 11 and 12.
-    - Reused by `u1_ranking` and by the centroid update in `kmeans2_ranking`.
-
-    Note:
-    - For the final version, this may need to be replaced by a method aligned
-      exactly with the matching-based formulation mentioned in the PDF.
+    - This matches the assignment view suggested in question 11.
+    - Entry (candidate, position) is the total Spearman contribution obtained by
+      placing that candidate at that position in the consensus ranking.
     """
     if not profile:
         return []
+
     m = len(profile[0])
-    average_rank = [0.0] * m
-    for order in profile:
+    position_maps = [[0] * m for _ in profile]
+    for voter_index, order in enumerate(profile):
         for rank, candidate in enumerate(order):
-            average_rank[candidate] += rank
-    n = len(profile)
+            position_maps[voter_index][candidate] = rank
+
+    costs = [[0] * m for _ in range(m)]
     for candidate in range(m):
-        average_rank[candidate] /= n
-    return sorted(range(m), key=lambda candidate: (average_rank[candidate], candidate))
+        for position in range(m):
+            costs[candidate][position] = sum(
+                abs(position_maps[voter_index][candidate] - position)
+                for voter_index in range(len(profile))
+            )
+    return costs
+
+
+def ranking_consensus_ballot(profile: RankingProfile) -> RankingBallot:
+    """
+    Build an optimal consensus ranking for Spearman distance.
+
+    Link with the project:
+    - This is the constructive part behind questions 11 and 12.
+    - Reused by `u1_ranking` and by the centroid update in `kmeans2_ranking`.
+    - The implementation solves the candidate-position assignment problem exactly
+      with dynamic programming on subsets.
+    """
+    if not profile:
+        return []
+
+    costs = ranking_assignment_costs(profile)
+    m = len(costs)
+
+    @lru_cache(maxsize=None)
+    def best_cost(position: int, used_mask: int) -> int:
+        if position == m:
+            return 0
+
+        best = float("inf")
+        for candidate in range(m):
+            if used_mask & (1 << candidate):
+                continue
+            candidate_cost = costs[candidate][position] + best_cost(position + 1, used_mask | (1 << candidate))
+            if candidate_cost < best:
+                best = candidate_cost
+        return int(best)
+
+    consensus: RankingBallot = []
+    used_mask = 0
+    for position in range(m):
+        best_candidate = -1
+        best_candidate_cost = float("inf")
+        for candidate in range(m):
+            if used_mask & (1 << candidate):
+                continue
+            candidate_cost = costs[candidate][position] + best_cost(position + 1, used_mask | (1 << candidate))
+            if candidate_cost < best_candidate_cost:
+                best_candidate = candidate
+                best_candidate_cost = candidate_cost
+        consensus.append(best_candidate)
+        used_mask |= 1 << best_candidate
+
+    return consensus
 
 
 def u1_ranking(profile: RankingProfile) -> int:

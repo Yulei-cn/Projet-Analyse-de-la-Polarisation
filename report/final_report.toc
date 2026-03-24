@@ -1,0 +1,38 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}Description g\'en\'erale de l'impl\'ementation}{2}{section.2}%
+\contentsline {section}{\numberline {3}Question 1 --- G\'en\'eration al\'eatoire de profils d'approbation}{2}{section.3}%
+\contentsline {paragraph}{Justification du choix}{3}{section*.2}%
+\contentsline {paragraph}{Exemple}{3}{section*.3}%
+\contentsline {section}{\numberline {4}Question 2 --- G\'en\'eration al\'eatoire de profils par ordres totaux}{3}{section.4}%
+\contentsline {paragraph}{Justification du choix}{3}{section*.4}%
+\contentsline {paragraph}{Exemple}{3}{section*.5}%
+\contentsline {section}{\numberline {5}Question 4 --- Quels axiomes sont satisfaits par $\phi _2$ ?}{3}{section.5}%
+\contentsline {paragraph}{Pourquoi \(\phi _2(p)=0\) n'est pas \'equivalent \`a un profil de la forme \(p_a\) dans le cas approval}{4}{section*.8}%
+\contentsline {paragraph}{Pourquoi \(\phi _2(p)=1\) n'est pas forc\'ement \'equivalent \`a un profil exactement bipolaire}{4}{section*.9}%
+\contentsline {paragraph}{Conclusion pour la question 4}{5}{section*.13}%
+\contentsline {section}{\numberline {6}Question 6 --- Exp\'eriences sur $\phi _2$}{5}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Cas approval}{5}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Cas ranking}{6}{subsection.6.2}%
+\contentsline {paragraph}{Conclusion exp\'erimentale}{6}{section*.14}%
+\contentsline {section}{\numberline {7}Question 7 --- Montrer que $d_H$ et $d_S$ sont des distances}{6}{section.7}%
+\contentsline {paragraph}{Pour \(d_H\)}{6}{section*.16}%
+\contentsline {paragraph}{Pour \(d_S\)}{7}{section*.17}%
+\contentsline {paragraph}{Appui algorithmique}{7}{section*.18}%
+\contentsline {section}{\numberline {8}Question 9 --- Quels axiomes sont satisfaits par $\phi _{d_H}$ et $\phi _{d_S}$ ?}{7}{section.8}%
+\contentsline {paragraph}{Conclusion pour la question 9}{8}{section*.24}%
+\contentsline {section}{\numberline {9}Question 10 --- Calcul efficace de $u_1$ pour les votes par approbation}{9}{section.9}%
+\contentsline {paragraph}{Conclusion}{9}{section*.27}%
+\contentsline {section}{\numberline {10}Question 11 --- Calcul efficace de $u_1$ pour les ordres totaux}{9}{section.10}%
+\contentsline {paragraph}{Remarque}{10}{section*.30}%
+\contentsline {paragraph}{Complexit\'e}{10}{section*.31}%
+\contentsline {section}{\numberline {11}Question 15 --- Exp\'eriences sur $\phi _{d_H}$ et $\phi _{d_S}$}{10}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Cas approval : $\phi _{d_H}$}{10}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Cas ranking : $\phi _{d_S}$}{11}{subsection.11.2}%
+\contentsline {paragraph}{Interpr\'etation}{11}{section*.32}%
+\contentsline {section}{\numberline {12}Utilisation des IA g\'en\'eratives}{11}{section.12}%
+\contentsline {paragraph}{Apports utiles}{11}{section*.33}%
+\contentsline {paragraph}{Limites observ\'ees}{12}{section*.34}%
+\contentsline {paragraph}{Bilan critique}{12}{section*.35}%
+\contentsline {section}{\numberline {13}Sources}{12}{section.13}%
+\contentsline {section}{\numberline {14}Conclusion}{12}{section.14}%

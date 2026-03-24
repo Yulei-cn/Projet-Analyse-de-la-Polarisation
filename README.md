@@ -30,6 +30,18 @@ python -m scripts.run_phi2_experiments
 python -m scripts.run_distance_experiments
 ```
 
+## Lancer le pipeline final
+
+```bash
+python -m scripts.run_final_pipeline
+```
+
+Ce pipeline genere en une fois :
+
+- les CSV finaux dans `outputs/data/`
+- les figures finales dans `outputs/figures/`
+- un resume automatique dans `outputs/final_summary.md`
+
 ## Lancer les tests
 
 ```bash
@@ -42,8 +54,13 @@ Cette version fournit :
 
 - un generateur de profils approval et ranking
 - les distances de Hamming et de Spearman
-- une premiere implementation de `phi_2`
-- une premiere implementation de `u1`, `u2_tilde`, `phi_dH` et `phi_dS`
+- une implementation corrigee de `phi_2`
+- une implementation de `u1` pour approval et ranking
+- une approximation de `u2_tilde` par clustering a deux groupes
+- les mesures `phi_dH` et `phi_dS`
 - des scripts d'experiences pour les questions 6 et 15
+- trois rapports d'avancement dans `report/`
+- une suite de tests unitaires
 
-Certaines parties sont encore des approximations pragmatiques et devront etre alignees exactement avec les definitions finales du rapport.
+Le code est maintenant suffisant pour produire les graphes et les tableaux necessaires au rendu final.
+Les principaux travaux restants concernent surtout la redaction theorique et la selection finale des resultats a commenter dans le rapport.
