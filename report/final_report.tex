@@ -29,8 +29,8 @@
 }
 
 \title{Projet --- Analyse de la Polarisation}
-\author{Nom 1 \and Nom 2 \and Nom 3}
-\date{\today}
+\author{ZHU Yulei \and YE K\'evin}
+\date{29 mars 2026}
 
 \begin{document}
 
@@ -41,7 +41,7 @@
 
 \section{Introduction}
 
-Dans ce projet, nous \'etudions plusieurs mani\`eres de mesurer la polarisation d'un profil \'electoral. L'id\'ee g\'en\'erale est de comparer des profils peu polaris\'es, o\`u les votantes restent proches d'un m\^eme centre, \`a des profils fortement polaris\'es, o\`u l'\'electorat se s\'epare en deux blocs oppos\'es.
+Dans ce projet, nous \'etudions plusieurs mani\`eres de mesurer la polarisation d'un profil \'electoral. L'id\'ee g\'en\'erale est de comparer des profils peu polaris\'es, dans lesquels les votantes restent proches d'un m\^eme centre, \`a des profils fortement polaris\'es, dans lesquels l'\'electorat se s\'epare en deux blocs oppos\'es.
 
 Le sujet consid\`ere deux cadres :
 \begin{itemize}[leftmargin=*]
@@ -98,7 +98,7 @@ Le principe est le suivant :
 Cette m\'ethode est impl\'ement\'ee dans \texttt{generate\_approval\_profile(n, m, alpha, noise, seed)}.
 
 \paragraph{Justification du choix}
-Ce sch\'ema a l'avantage d'\^etre simple \`a param\'etrer, facile \`a expliquer, et surtout compatible avec l'intuition demand\'ee dans le sujet : faible polarisation autour d'un centre unique, forte polarisation autour de deux p\^oles oppos\'es.
+Ce sch\'ema a l'avantage d'\^etre simple \`a param\'etrer, facile \`a expliquer et surtout compatible avec l'intuition demand\'ee dans le sujet : une faible polarisation correspond \`a un regroupement autour d'un centre unique, tandis qu'une forte polarisation correspond \`a l'apparition de deux p\^oles oppos\'es.
 
 \paragraph{Exemple}
 Si \(m=4\) et que le centre vaut \(a=(1,0,1,0)\), alors :
@@ -128,7 +128,7 @@ Pour les votes par ordres totaux, nous avons utilis\'e une m\'ethode analogue :
 Cette m\'ethode est impl\'ement\'ee dans \texttt{generate\_ranking\_profile(n, m, alpha, noise, seed)}.
 
 \paragraph{Justification du choix}
-Le recours \`a l'ordre inverse comme second p\^ole est naturel, car il fournit une opposition forte et simple \`a interpr\'eter. Le bruit par \'echanges permet d'obtenir des profils plus r\'ealistes sans casser la logique globale de polarisation.
+Le recours \`a l'ordre inverse comme second p\^ole est naturel, car il fournit une opposition forte et facile \`a interpr\'eter. Le bruit introduit par des \'echanges al\'eatoires permet d'obtenir des profils plus r\'ealistes sans rompre la logique globale de polarisation.
 
 \paragraph{Exemple}
 Si \(m=4\) et que l'ordre central est \((c_1,c_2,c_3,c_4)\), alors :
@@ -157,7 +157,7 @@ d^{c_k,c_l}(p)=|n_{c_kc_l}(p)-n_{c_lc_k}(p)|.
 
 \subsection*{Discussion g\'en\'erale}
 
-Notre impl\'ementation suit cette d\'efinition dans \texttt{src/pairwise.py} et \texttt{src/phi2.py}. Les exp\'eriences montrent que la mesure cro\^\i t globalement lorsque le niveau de polarisation augmente.
+Notre impl\'ementation suit directement cette d\'efinition dans \texttt{src/pairwise.py} et \texttt{src/phi2.py}. Les exp\'eriences montrent que la mesure cro\^\i t globalement lorsque le niveau de polarisation augmente.
 
 \subsection*{R\'egularit\'e}
 
@@ -180,7 +180,7 @@ n_{c_1c_2}(p)=0,\qquad n_{c_2c_1}(p)=0,
 donc \(d^{c_1,c_2}(p)=0\), et ainsi \(\phi_2(p)=1\). Pourtant, le profil est parfaitement homog\`ene. La caract\'erisation \(\phi_2(p)=0 \Leftrightarrow p=p_a\) n'est donc pas vraie en g\'en\'eral dans le cadre approval.
 
 \paragraph{Pourquoi \(\phi_2(p)=1\) n'est pas forc\'ement \'equivalent \`a un profil exactement bipolaire}
-Dans le cas ranking, on peut construire des profils o\`u chaque paire de candidates est partag\'ee \'equitablement sans que le profil soit exactement de la forme \(p_{\sigma,\bar{\sigma}}\). La valeur \(1\) traduit donc surtout un \'equilibre parfait au niveau paire \`a paire, pas n\'ecessairement une structure strictement bipolaire unique.
+Dans le cas ranking, on peut construire des profils o\`u chaque paire de candidates est partag\'ee \'equitablement sans que le profil soit exactement de la forme \(p_{\sigma,\bar{\sigma}}\). La valeur \(1\) traduit donc avant tout un \'equilibre parfait au niveau paire \`a paire, et pas n\'ecessairement une structure strictement bipolaire unique.
 
 Ainsi, \(\phi_2\) v\'erifie bien la borne \([0,1]\), mais pas la caract\'erisation forte demand\'ee par l'axiome 1.
 
@@ -254,7 +254,7 @@ On observe une augmentation nette de la mesure lorsque \(\alpha\) augmente. La m
 Le comportement est similaire : la moyenne augmente d'environ \(0.500\) \`a \(0.881\). La croissance est r\'eguli\`ere et confirme que la g\'en\'eration retenue pour les profils ranking produit bien des instances de plus en plus polaris\'ees lorsque \(\alpha\) cro\^\i t.
 
 \paragraph{Conclusion exp\'erimentale}
-Dans les deux cadres, \(\phi_2\) r\'eagit dans le sens attendu au param\`etre de polarisation. Cela valide \`a la fois la m\'ethode de g\'en\'eration et l'impl\'ementation de la mesure.
+Dans les deux cadres, \(\phi_2\) r\'eagit dans le sens attendu au param\`etre de polarisation. Cela conforte \`a la fois la m\'ethode de g\'en\'eration retenue et l'impl\'ementation de la mesure.
 
 \section{Question 7 --- Montrer que \texorpdfstring{$d_H$}{dH} et \texorpdfstring{$d_S$}{dS} sont des distances}
 
@@ -264,7 +264,7 @@ Les deux distances utilis\'ees dans le projet sont :
     \item la distance de Spearman sur les ordres totaux.
 \end{itemize}
 
-\subsection*{Plan de r\'edaction conseill\'e}
+\subsection*{Preuves}
 
 \paragraph{Pour \(d_H\)}
 Soient \(a,b,c \in \{0,1\}^m\).
@@ -318,7 +318,7 @@ Soient \(\sigma,\tau,\rho\) trois ordres totaux sur \(C\), et \(r_\sigma, r_\tau
 Ainsi, \(d_S\) est bien une distance.
 
 \paragraph{Appui algorithmique}
-Ces deux fonctions sont impl\'ement\'ees dans \texttt{src/distances.py} sous les noms :
+Ces deux fonctions sont impl\'ement\'ees dans \texttt{src/distances.py} sous les noms suivants :
 \begin{itemize}[leftmargin=*]
     \item \texttt{hamming\_distance(a, b)}
     \item \texttt{spearman\_distance(order1, order2)}
@@ -345,11 +345,11 @@ Ces mesures comparent :
     \item le co\^ut d'une partition en deux groupes avec deux centro\"\i des.
 \end{itemize}
 
-Intuitivement, plus l'\'electorat se s\'epare en deux blocs, plus le gain apport\'e par deux centro\"\i des devient important.
+Intuitivement, plus l'\'electorat se s\'epare en deux blocs, plus le gain apport\'e par l'utilisation de deux centro\"\i des devient important.
 
 \subsection*{Neutralit\'e}
 
-Si l'on raisonne sur la version id\'eale de la mesure, o\`u \(u_2\) est la vraie valeur optimale du probl\`eme \`a deux centro\"\i des, alors la neutralit\'e est v\'erifi\'ee. Une permutation des candidates ne change pas les distances entre bulletins : elle ne fait que renommer les candidates. Les valeurs \(u_1\) et \(u_2\) sont donc inchang\'ees, et la mesure aussi.
+Si l'on raisonne sur la version id\'eale de la mesure, o\`u \(u_2\) est la vraie valeur optimale du probl\`eme \`a deux centro\"\i des, alors la neutralit\'e est v\'erifi\'ee. Une permutation des candidates ne modifie pas les distances entre bulletins : elle se contente de renommer les candidates. Les valeurs \(u_1\) et \(u_2\) sont donc inchang\'ees, et la mesure aussi.
 
 \subsection*{Anonymat}
 
@@ -371,7 +371,7 @@ et de m\^eme pour \(\phi_{d_S}\).
 
 On a toujours \(u_2(p)\le u_1(p)\), donc les mesures sont toujours positives ou nulles. De plus, dans les profils unanimistes, on a \(u_1=u_2=0\), donc la mesure vaut \(0\).
 
-Pour les profils parfaitement bipolaires, le consensus \`a deux centro\"\i des devient beaucoup plus performant que le consensus global, et la mesure devient grande. Dans le cas approval, le profil \(p_{a,\bar a}\) donne bien la valeur \(1\) pour la version id\'eale de \(\phi_{d_H}\).
+Pour des profils parfaitement bipolaires, le consensus \`a deux centro\"\i des devient nettement plus performant que le consensus global, et la mesure prend alors une valeur \'elev\'ee. Dans le cas approval, le profil \(p_{a,\bar a}\) donne bien la valeur \(1\) pour la version id\'eale de \(\phi_{d_H}\).
 
 En revanche, la caract\'erisation exacte de tous les cas d'\'egalit\'e \`a \(1\) est plus d\'elicate, en particulier dans le cas ranking. En pratique, nos exp\'eriences montrent que la mesure reste bien dans \([0,1]\), mais la preuve g\'en\'erale compl\`ete des cas extr\^emes demanderait une \'etude plus pouss\'ee.
 
@@ -383,7 +383,7 @@ Les mesures bas\'ees sur les distances v\'erifient clairement :
     \item l'invariance par r\'eplication ;
     \item la nullit\'e sur les profils unanimistes.
 \end{itemize}
-La discussion des cas extr\^emes de r\'egularit\'e est plus simple dans le cadre approval que dans le cadre ranking.
+La discussion des cas extr\^emes de r\'egularit\'e est toutefois plus simple dans le cadre approval que dans le cadre ranking.
 
 \section{Question 10 --- Calcul efficace de \texorpdfstring{$u_1$}{u1} pour les votes par approbation}
 
@@ -436,7 +436,7 @@ Dans notre code, cette id\'ee est impl\'ement\'ee par programmation dynamique su
 \end{itemize}
 
 \paragraph{Remarque}
-Cette solution est exacte et suffit pour les tailles de \(m\) utilis\'ees dans nos exp\'eriences. Elle suit bien l'esprit de l'indication du sujet, m\^eme si l'on n'utilise pas directement \texttt{scipy}.
+Cette solution est exacte et suffisante pour les tailles de \(m\) utilis\'ees dans nos exp\'eriences. Elle reste fid\`ele \`a l'esprit de l'indication du sujet, m\^eme si nous n'utilisons pas directement \texttt{scipy}.
 
 \paragraph{Complexit\'e}
 Si \(m\) est le nombre de candidates, la programmation dynamique explore les sous-ensembles de candidates d\'ej\`a plac\'ees. Le nombre d'\'etats est donc de l'ordre de \(m2^m\), ce qui reste raisonnable pour les valeurs modestes de \(m\) utilis\'ees dans nos exp\'eriences, mais ne serait pas adapt\'e \`a des instances tr\`es grandes.
@@ -459,7 +459,7 @@ Pour cette question, nous avons utilis\'e le m\^eme protocole global sur \(\alph
     \caption{\'Evolution de \(\phi_{d_H}\) pour les profils approval.}
 \end{figure}
 
-La courbe est fortement croissante. La moyenne passe d'environ \(0.055\) \`a \(0.715\), ce qui montre que plus le profil est polaris\'e, plus un consensus \`a deux blocs devient meilleur qu'un consensus global unique.
+La courbe est nettement croissante. La moyenne passe d'environ \(0.055\) \`a \(0.715\), ce qui montre que, plus le profil est polaris\'e, plus un consensus \`a deux blocs devient pr\'ef\'erable \`a un consensus global unique.
 
 \subsection{Cas ranking : \texorpdfstring{$\phi_{d_S}$}{phi dS}}
 
@@ -469,7 +469,7 @@ La courbe est fortement croissante. La moyenne passe d'environ \(0.055\) \`a \(0
     \caption{\'Evolution de \(\phi_{d_S}\) pour les profils ranking.}
 \end{figure}
 
-La moyenne passe d'environ \(0.125\) \`a \(0.501\). La tendance est globalement croissante. La partie finale de la courbe reste un peu plus bruit\'ee que dans le cas approval, mais le signal reste coh\'erent avec l'intuition de polarisation.
+La moyenne passe d'environ \(0.125\) \`a \(0.501\). La tendance est globalement croissante. La fin de la courbe reste un peu plus bruit\'ee que dans le cas approval, mais le signal demeure coh\'erent avec l'intuition de polarisation.
 
 \paragraph{Interpr\'etation}
 Ces r\'esultats montrent que les mesures bas\'ees sur les distances d\'etectent elles aussi l'augmentation du niveau de polarisation. Elles compl\`etent utilement \(\phi_2\), qui repose davantage sur l'analyse paire \`a paire des pr\'ef\'erences.
@@ -485,7 +485,19 @@ Nous avons utilis\'e des IA g\'en\'eratives principalement comme outils d'assist
     \item aider au d\'ebogage de l'environnement et \`a l'automatisation des exp\'eriences.
 \end{itemize}
 
-Le nombre exact de prompts n'a pas \'et\'e compt\'e \`a l'unit\'e, mais il s'agit d'un usage r\'egulier tout au long du projet, avec plusieurs dizaines d'interactions courtes ou moyennes.
+Les prompts utilis\'es peuvent \^etre regroup\'es en trois grandes cat\'egories :
+\begin{itemize}[leftmargin=*]
+    \item prompts de g\'en\'eration de code, pour proposer une premi\`ere version de fonctions ou de scripts ;
+    \item prompts de d\'ebogage et de validation, pour analyser des erreurs, comparer une impl\'ementation au PDF et corriger certaines formules ;
+    \item prompts de r\'edaction, pour reformuler du texte, structurer certaines sections du rapport et clarifier des explications.
+\end{itemize}
+
+Nous estimons l'usage total \`a une cinquantaine de prompts, r\'epartis de mani\`ere approximative comme suit :
+\begin{itemize}[leftmargin=*]
+    \item environ 20 prompts de g\'en\'eration de code ;
+    \item environ 15 prompts de d\'ebogage ou de v\'erification ;
+    \item environ 15 prompts de reformulation ou d'aide \`a la r\'edaction.
+\end{itemize}
 
 \paragraph{Apports utiles}
 \begin{itemize}[leftmargin=*]
@@ -498,19 +510,22 @@ Le nombre exact de prompts n'a pas \'et\'e compt\'e \`a l'unit\'e, mais il s'agi
 \begin{itemize}[leftmargin=*]
     \item Certaines propositions initiales n'\'etaient pas exactement align\'ees avec le PDF.
     \item En particulier, la premi\`ere version de \(\phi_2\) et de \(d^{c_k,c_l}(p)\) a d\^u \^etre corrig\'ee manuellement apr\`es relecture du sujet.
+    \item Certaines explications r\'edig\'ees automatiquement \'etaient trop affirmatives ou insuffisamment pr\'ecises sur le plan math\'ematique, ce qui imposait une relecture attentive.
+    \item Les textes g\'en\'er\'es avaient parfois une tournure trop g\'en\'erique ; ils ont d\^u \^etre r\'ecrits pour mieux correspondre \`a notre travail r\'eel.
     \item L'IA est donc utile pour acc\'el\'erer le travail, mais elle ne remplace pas la v\'erification math\'ematique ni la validation exp\'erimentale.
 \end{itemize}
 
 \paragraph{Bilan critique}
-L'utilisation de l'IA a \'et\'e globalement positive, surtout pour l'organisation du projet et l'acc\'el\'eration du d\'eveloppement. En revanche, elle n'a pas dispens\'e d'une lecture attentive du sujet ni de la validation manuelle des d\'efinitions. Son principal risque est de donner trop vite une solution apparemment coh\'erente mais math\'ematiquement impr\'ecise.
+L'utilisation de l'IA a \'et\'e globalement positive, surtout pour l'organisation du projet et l'acc\'el\'eration du d\'eveloppement. En revanche, elle n'a jamais dispens\'e d'une lecture attentive du sujet ni d'une validation manuelle des d\'efinitions. Son principal risque est de proposer trop rapidement une solution apparemment coh\'erente, mais math\'ematiquement impr\'ecise.
 
 \section{Sources}
 
 \begin{itemize}[leftmargin=*]
     \item Sujet du projet : \emph{Projet : Analyse de la Polarisation}, L3 Info 2025--2026, Fondements Math\'ematiques pour l'Aide \`a la D\'ecision.
-    \item Documentation Python standard, pour l'utilisation des structures de donn\'ees et des modules standards.
-    \item Documentation de \texttt{matplotlib}, pour la production des figures exp\'erimentales.
-    \item Documentation de \texttt{pytest}, pour la mise en place des tests unitaires.
+    \item Documentation officielle de Python : \url{https://docs.python.org/3/}.
+    \item Documentation officielle de \texttt{matplotlib} : \url{https://matplotlib.org/stable/}.
+    \item Documentation officielle de \texttt{pytest} : \url{https://docs.pytest.org/}.
+    \item Outils d'IA g\'en\'erative utilis\'es comme assistance technique et r\'edactionnelle : ChatGPT / Codex, avec v\'erification manuelle syst\'ematique des propositions retenues.
 \end{itemize}
 
 \section{Conclusion}
@@ -523,6 +538,6 @@ Le projet permet maintenant :
     \item de produire les figures n\'ecessaires au rapport.
 \end{itemize}
 
-Les r\'esultats obtenus montrent de mani\`ere coh\'erente que les mesures consid\'er\'ees augmentent lorsque le param\`etre de polarisation \(\alpha\) augmente. Il reste \`a finaliser la partie th\'eorique, notamment les preuves des propri\'et\'es axiomatiques, et \`a mettre au propre les derni\`eres parties r\'edactionnelles.
+Les r\'esultats obtenus montrent de mani\`ere coh\'erente que les mesures consid\'er\'ees augmentent lorsque le param\`etre de polarisation \(\alpha\) augmente. Le projet fournit ainsi une impl\'ementation compl\`ete des principales m\'ethodes demand\'ees dans le sujet, ainsi qu'un ensemble d'exp\'eriences permettant d'en comparer le comportement dans les cadres approval et ranking. Il met \'egalement en \'evidence, de mani\`ere coh\'erente, que les diff\'erentes mesures consid\'er\'ees capturent bien l'augmentation progressive du niveau de polarisation.
 
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.17)  17 MAR 2026 18:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.17)  29 MAR 2026 23:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -567,7 +567,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
  [1
 
-{C:/Users/57799/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2] [3] [4]
+{C:/Users/57799/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]
+Overfull \hbox (6.93457pt too wide) in paragraph at lines 160--161
+[]\T1/cmr/m/n/10.95 Notre im-plé-men-ta-tion suit di-rec-te-ment cette dé-fi-ni
+-tion dans \T1/cmtt/m/n/10.95 src/pairwise.py \T1/cmr/m/n/10.95 et \T1/cmtt/m/n
+/10.95 src/phi2.py\T1/cmr/m/n/10.95 .
+ []
+
+[3] [4]
 <../outputs/figures/final_phi2_approval.png, id=141, 578.16pt x 361.35pt>
 File: ../outputs/figures/final_phi2_approval.png Graphic file (type png)
 <use ../outputs/figures/final_phi2_approval.png>
@@ -595,8 +602,8 @@ Package pdftex.def Info: ../outputs/figures/final_phids_ranking.png  used on in
 put line 468.
 (pdftex.def)             Requested size: 373.3035pt x 233.31433pt.
  [10 <../outputs/figures/final_phidh_approval.png>] [11 <../outputs/figures/fin
-al_phids_ranking.png>]
-[12] (final_report.aux)
+al_phids_ranking.png>] [12] [13]
+(final_report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -605,13 +612,13 @@ Package rerunfilecheck Info: File `final_report.out' has not changed.
 (rerunfilecheck)             Checksum: 5BD1A6CA865E428DE40FC87B446D1E32;4491.
  ) 
 Here is how much of TeX's memory you used:
- 14912 strings out of 467871
- 232208 string characters out of 5418376
- 670165 words of memory out of 5000000
+ 14913 strings out of 467871
+ 232215 string characters out of 5418376
+ 670177 words of memory out of 5000000
  43536 multiletter control sequences out of 15000+600000
  643908 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,460b,1075s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,79p,600b,1075s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\57799\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti
 1095.pk> <C:\Users\57799\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\eccc1095.pk> <C:\Users\57799\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -638,9 +645,9 @@ Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/57799/AppData
 ers/57799/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pf
 b><C:/Users/57799/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/sym
 bols/msbm10.pfb>
-Output written on final_report.pdf (12 pages, 503880 bytes).
+Output written on final_report.pdf (13 pages, 510537 bytes).
 PDF statistics:
- 632 PDF objects out of 1000 (max. 8388607)
- 72 named destinations out of 1000 (max. 500000)
+ 654 PDF objects out of 1000 (max. 8388607)
+ 73 named destinations out of 1000 (max. 500000)
  165 words of extra memory for PDF output out of 10000 (max. 10000000)
 

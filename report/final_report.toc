@@ -31,7 +31,7 @@
 \contentsline {subsection}{\numberline {11.2}Cas ranking : $\phi _{d_S}$}{11}{subsection.11.2}%
 \contentsline {paragraph}{Interpr\'etation}{11}{section*.32}%
 \contentsline {section}{\numberline {12}Utilisation des IA g\'en\'eratives}{11}{section.12}%
-\contentsline {paragraph}{Apports utiles}{11}{section*.33}%
+\contentsline {paragraph}{Apports utiles}{12}{section*.33}%
 \contentsline {paragraph}{Limites observ\'ees}{12}{section*.34}%
 \contentsline {paragraph}{Bilan critique}{12}{section*.35}%
 \contentsline {section}{\numberline {13}Sources}{12}{section.13}%
